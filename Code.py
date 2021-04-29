@@ -38,7 +38,9 @@ def answer(update, context):
                         city3 = cur.execute("SELECT id FROM Cities WHERE name=?;", (cities[i][0],)).fetchone()
                         print(city3)
                         print(named_cities)
-                        if cities[i][0][0] == string[-x] and string[-1] != "Ь" and city3[0] not in named_cities:
+                        if string[-x] == ' ' or string[-x] == '-':
+                            break
+                        elif cities[i][0][0] == string[-x] and string[-1] != "Ь" and city3[0] not in named_cities:
                             ok_cities.append(cities[i][0])
                         elif cities[i][0][0] == string[-(x + 1)] and city3[0] in named_cities:
                             ok_cities.append(cities[i][0])
